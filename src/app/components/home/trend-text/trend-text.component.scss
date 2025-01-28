@@ -1,0 +1,34 @@
+@mixin width($val) {
+  width: $val;
+}
+
+%pseudo-common {
+  content: "";
+  display: block;
+  height: 1.5px;
+  background-color: #fff;
+}
+
+.trend-text {
+  h2 {
+    line-height: 1.35;
+  }
+
+  &::after {
+    @extend %pseudo-common;
+  }
+
+  &::before {
+    @extend %pseudo-common;
+  }
+
+  &::after {
+    @include width(100%);
+  }
+
+  &::before {
+    @include width(25%);
+  }
+
+
+}

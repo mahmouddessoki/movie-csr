@@ -1,0 +1,32 @@
+<section id="movie">
+  <div class="container">
+    <input type="search" id="search" (input)="searchMovie($event)" class="form-control mx-auto mb-5"
+      placeholder="Search Movie By Title. . . .">
+    <div class="row gy-3 align-items-center">
+      @for (movie of movies; track movie.id) {
+      @if (movie.backdrop_path) {
+
+      <div class="col-lg-3 col-md-4 col-sm-6">
+        <app-mtp-card [mtp]="movie" [mediaType]="'movie'"></app-mtp-card>
+      </div>
+      }
+      }@empty {
+      @if (loading) {
+
+      <span #loader class="loader mx-auto"></span>
+      }@else if(errorMsg !== ''){
+        <div class="alert alert-danger mx-auto text-dark">{{errorMsg}}</div>
+      }@else {
+
+        <p class="h2 text-capitalize mx-auto text-center">No movies found. . . .</p>
+      }
+
+      }
+    </div>
+
+      <app-pagination [totalPages]="totalPages" (currentPageChange)="getPage($event)"></app-pagination>
+
+
+
+  </div>
+</section>

@@ -1,0 +1,27 @@
+<section id="tv">
+  <div class="container">
+    <input type="search" id="search" (input)="searchPerson($event)" class="form-control mx-auto mb-5"
+      placeholder="Search Person By Name. . . .">
+    <div class="row gy-3">
+      @for (actor of people; track actor.id) {
+      @if (actor.profile_path) {
+      <div class="col-lg-3 col-md-4 col-sm-6">
+        <app-mtp-card [mtp]="actor" [mediaType]="'person'"></app-mtp-card>
+      </div>
+      }
+      }@empty {
+      @if (loading) {
+
+      <span #loader class="loader mx-auto"></span>
+      }@else if(errorMsg !== ''){
+      <div class="alert alert-danger text-dark mx-auto">{{errorMsg}}</div>
+      }@else {
+
+      <p class="h2 text-capitalize text-center mx-auto">No Persons found. . . .</p>
+      }
+
+      }
+    </div>
+    <app-pagination [totalPages]="totalPages" (currentPageChange)="getPage($event)"></app-pagination>
+  </div>
+</section>

@@ -1,0 +1,30 @@
+%pag-common {
+  cursor: pointer;
+  transition: transform 0.3s linear;
+}
+#pagination {
+  #current {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  #next {
+    @extend %pag-common;
+
+    &:hover {
+      transform: translateX(10px);
+    }
+  }
+
+  #prev {
+    @extend %pag-common;
+
+    &:hover {
+      transform: translateX(-10px);
+    }
+  }
+}

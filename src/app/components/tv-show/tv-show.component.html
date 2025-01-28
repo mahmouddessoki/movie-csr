@@ -1,0 +1,27 @@
+<section id="tv">
+  <div class="container">
+    <input type="search" id="search" (input)="searchTvShows($event)" class="form-control col-md-6 col-10 mx-auto mb-5"
+      placeholder="Search TVShow By Title. . . .">
+    <div class="row gy-3">
+      @for (tv of tvShows; track tv.id) {
+      @if (tv.backdrop_path) {
+      <div class="col-lg-3 col-md-4 col-sm-6">
+        <app-mtp-card [mtp]="tv" [mediaType]="'tv'"></app-mtp-card>
+      </div>
+      }
+      }@empty {
+      @if (loading) {
+
+      <span #loader class="loader mx-auto"></span>
+      }@else if(errorMsg !== ''){
+      <div class="alert alert-danger text-white mx-auto">{{errorMsg}}</div>
+      }@else {
+
+      <p class="h2 text-capitalize text-center mx-auto">No TVShows found. . . .</p>
+      }
+
+      }
+    </div>
+    <app-pagination [totalPages]="totalPages" (currentPageChange)="getPage($event)"></app-pagination>
+  </div>
+</section>

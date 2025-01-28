@@ -1,0 +1,51 @@
+$bg-color: #343A40;
+$color: rgba(255, 255, 255, 0.5);
+$hover-color: #fff !important;
+$font-size : 16px;
+$logo-size : 30px;
+
+%nav-toggler-common {
+  background-color: $hover-color;
+  width: 30px;
+  height: 1px;
+  display: block;
+}
+%toggler-pseudo-common {
+  content: "";
+  display: block;
+}
+
+nav {
+  background-color: $bg-color;
+
+  .nav-link {
+    color: $color;
+
+    &:hover {
+      color: $hover-color;
+    }
+  }
+
+  .navbar-brand {
+    font-size: $logo-size !important;
+    color: $hover-color;
+  }
+
+  .navbar-toggler {
+    & {
+      flex-direction: column;
+      row-gap: 7px
+    }
+    span {
+      @extend %nav-toggler-common;
+    }
+    &::after {
+      @extend %toggler-pseudo-common;
+      @extend %nav-toggler-common;
+    }
+    &::before {
+      @extend %toggler-pseudo-common;
+      @extend %nav-toggler-common
+    }
+  }
+}

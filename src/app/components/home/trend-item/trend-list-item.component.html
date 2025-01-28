@@ -1,0 +1,7 @@
+<div class="trending-item position-relative" [routerLink]="'/details/'+item.media_type+'/'+item.id">
+
+  <img [src]="IMG_URL+item.poster_path " class="w-100" alt="trending-item">
+  <span class="rate position-absolute top-0 end-0">{{item.vote_average}}</span>
+  <h3 class="h5 text-center py-2 w-100 bottom-0">{{item.original_name || item.title}}</h3>
+  <div id="cloud"></div>
+</div>

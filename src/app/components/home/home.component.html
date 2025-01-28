@@ -1,0 +1,78 @@
+<section id="home" class="home">
+  <div class="container">
+    <div class="row gy-3 justify-content-center justify-content-md-start mb-4" id="trend-movie">
+      <div class="col-lg-3 col-md-6 col-12">
+        <app-trend-text>
+          <h2 class="fw-normal mb-3 mt-2">
+            Trending <br>
+            Movies <br>
+            to watch now
+          </h2>
+          <p>
+            Most watched movies by days
+          </p>
+        </app-trend-text>
+        <input type="search" (input)="searchTrendMovie($event)" class="form-control mt-3"
+          placeholder="search movie title" id="movie-search">
+
+      </div>
+      @for (movie of trendMovie; track movie.id) {
+      <div class="col-lg-3 col-md-6 col-12">
+        <app-trend-item [item]="movie"></app-trend-item>
+      </div>
+      }@empty {
+      <div class="col-md-8 col-12 text-center align-self-center">
+
+      @if (loading) {
+
+      <span #loader class="loader"></span>
+      }@else if(errorMsg !== ''){
+      <div class="alert alert-danger text-white">{{errorMsg}}</div>
+      }@else {
+
+      <p class="h2 text-capitalize text-center">No Trending Movies found. . . .</p>
+      }
+      </div>
+      }
+
+    </div>
+    <div class="row gy-3 mt-5 justify-content-center justify-content-md-start" id="trend-tv">
+      <div class="col-lg-3 col-md-6 col-12">
+        <app-trend-text>
+          <h2 class="fw-normal mb-3 mt-2">
+            Trending <br>
+            Tv <br>
+            to watch now
+          </h2>
+          <p>
+            Most watched movies by days
+          </p>
+        </app-trend-text>
+        <input type="search" (input)="searchTrendTV($event)" class="form-control mt-3" placeholder="search tv name"
+          id="tv-search">
+      </div>
+      @for (tv of trendTv; track tv.id) {
+      <div class="col-lg-3 col-md-6 col-12">
+        <app-trend-item [item]="tv"></app-trend-item>
+      </div>
+      }@empty {
+      <div class="col-md-8 col-12 text-center align-self-center">
+
+        @if (loading) {
+
+        <span #loader class="loader"></span>
+        }@else if(errorMsg !== ''){
+        <div class="alert alert-danger text-white">{{errorMsg}}</div>
+        }@else {
+
+        <p class="h2 text-capitalize text-center">No Trending TVShows found. . . .</p>
+        }
+      </div>
+
+      }
+    </div>
+
+
+
+  </div>
+</section>

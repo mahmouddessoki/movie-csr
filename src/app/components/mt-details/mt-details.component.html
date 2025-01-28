@@ -1,0 +1,39 @@
+<section id="details">
+  <div id="movie-tv-details">
+    <div class="container">
+      <div class="row gy-3 justify-content-center">
+        <div class="col-lg-3 col-md-5 col-12">
+          <div class="image shadow-lg">
+            @if (mediaType=='tv' || mediaType=='movie') {
+              <img [src]="IMG_URL+mediaDetail.poster_path" class="w-100 img-thumbnail" alt="{{mediaType}} Poster">
+            }@else {
+              <img [src]="IMG_URL+mediaDetail.profile_path" class="w-100 img-thumbnail" alt="{{mediaType}} Poster">
+
+            }
+          </div>
+        </div>
+        <div class="col-lg-8 col-md-7 col-12">
+          <div class="details">
+            <h3 id="name" class="mb-3">
+              {{mediaDetail.original_title || mediaDetail.name}}
+            </h3>
+            @if (mediaType == 'tv' || mediaType=='movie') {
+              <p class="text-success">{{mediaDetail.tagline}}</p>
+              <p>Vote_average : {{mediaDetail.vote_average}}</p>
+              <p>Vote_count : {{mediaDetail.vote_count}}</p>
+            }@else {
+              <p>known_for_department : {{mediaDetail.known_for_department}}</p>
+            }
+            <p class="mb-4">Popularity : {{mediaDetail.popularity}}</p>
+            <p>{{mediaDetail.overview || 'place_of_birth : '+ mediaDetail.place_of_birth}}</p>
+            @if (mediaType == 'tv' || mediaType=='movie') {
+
+              <a target="_blank" [href]="mediaDetail.homepage" class="btn btn-outline-success text-white">Know More</a>
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>

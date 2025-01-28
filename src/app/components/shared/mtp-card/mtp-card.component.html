@@ -1,0 +1,8 @@
+<div [routerLink]="'/details/'+mediaType+'/'+mtp.id"
+  class="item-card border h-100 border-4 position-relative shadow-lg rounded-3 border-black">
+  <img [src]="IMG_URL+(mtp.poster_path || mtp.profile_path )" class="w-100 h-100 rounded-3 " [alt]="mediaType">
+  <div class="card-overlay text-capitalize text-black fw-medium rounded-3 text-center d-flex align-items-center p-3
+           position-absolute px-4 w-100 h-100 bg-white bg-opacity-75">
+    click to know more about the {{mediaType}}
+  </div>
+</div>

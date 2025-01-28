@@ -1,0 +1,30 @@
+$section-bg-color: #131722;
+
+.trending-item {
+  .rate {
+    background-color: #0099CC;
+    padding: 5px 10px;
+  }
+
+  & {
+    width: 90%;
+    cursor: pointer;
+    overflow: hidden;
+    filter: grayscale(1);
+    transition: filter 0.3s ease-in-out;
+  }
+  &:hover{
+    filter: grayscale(0);
+  }
+
+  #cloud {
+    position: absolute;
+    top: -50%;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.6);
+    width: 27%;
+    height: 100%;
+    transform: rotate(51deg);
+    transition: all 0.3s ease-in-out;
+  }
+}
